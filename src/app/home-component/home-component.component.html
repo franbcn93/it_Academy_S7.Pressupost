@@ -1,2 +1,39 @@
-<p>home-component works!</p>
-<app-root></app-root>
+<div class="container">
+    <div class="row" >
+        <h4>¿Vols contratar algún servei?</h4>
+        <form [formGroup]="form" novalidate >
+            <div *ngFor="let product of products; let i=index">
+                <input type="checkbox" name="{{product.price}}" id="{{product.id}}"
+                (change)="onCheckboxChange($event)">{{product.name}}
+                <app-component-panell (addPage)="addItemPage($event)" 
+                (addLanguage)="addItemLanguage($event)"
+                (restPage)="restItemPage($event)" 
+                (restLanguage)="restItemLanguage($event)"
+                (newItemEvent)="itemPanell($event)" 
+                *ngIf="paginaWeb && product.id === 0">
+            </app-component-panell>
+        </div>
+    </form>
+    <p id="frasePreu"></p>
+    <p>{{preu}} {{this.total}} €.</p>
+    <div class="row enrera">
+        <div class="col">
+            <button (click)="onClicked()" class="btn btn-primary">Aceptar</button>
+        </div>
+        <div class="col">
+            <button routerLink="" class="btn btn-secondary">Tornar enrera</button>
+        </div>
+        <div class="col">
+            <button routerLink="/instruccions" class="btn btn-success">Instruccions</button>
+        </div>
+    </div>
+    <p class="acepta">Prem el botó 'Aceptar' per saber el teu preu en una finestra d'alert.</p>
+    <p class="acepta">Prem el botó 'Tornar enrera' per anar a l'inici (pàg Welcome).</p>
+    <p class="acepta">Prem el botó 'Instruccions' per veure les bases de l'exercici (pàg Instruccions).</p>
+    </div>
+</div>
+<!-- <p>You can pass an existing component as content of the modal window. In this case, if you're still using Angular 8 or older, remember to add the content component
+    in the <code>entryComponents</code> section of your <code>NgModule</code>. For Angular 9 or newer, it's not needed anymore.
+    </p>
+    
+    <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
