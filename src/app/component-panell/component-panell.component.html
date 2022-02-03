@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+        <form>
+            <label for="">Número de páginas: </label>
+            <button (click)="addPagina()">
+                <i class="fas fa-plus-square fa-2x" ></i>
+            </button> 
+            <input (change)="addNewItem($event)" 
+                    type="number" 
+                    id="paginas" 
+                    value={{this.paginas}}
+                    min="0"
+                    max="50">
+            <button (click)="restPagina()">
+                <i class="fas fa-minus-square fa-2x"></i>
+            </button>
+            <br><br>
+            <label for="">Número de idiomas:</label>
+            <button (click)="addIdioma()">
+                <i class="fas fa-plus-square fa-2x"></i>
+            </button>
+            <input (change)="addNewItem($event)" 
+                    type="number" 
+                    id="idiomas" 
+                    value={{this.idiomas}}
+                    min="0"
+                    max="50">
+            <button (click)="restIdioma()">
+                <i class="fas fa-minus-square fa-2x"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+  
