@@ -5,15 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class ServeiPressupostService {
   precio:number = 0;
+  client: string="Client anonim";
+  nomPresupost:string="Anonim";
+  arrayClients:Client[]=[];
 
   constructor() { }
 
-  mostraMissatge(mensaje: string, resultat:number){
-    alert(mensaje + resultat + " €.")
+  mostraMissatge(mensaje:string, resultat:number, nomPresupost:string, nomClient:string){
+    alert("El client: " + nomClient + " a efectuat un contracte amb el nom del pressupost: " +
+          nomPresupost + ".\n" + mensaje + resultat + " €.")
   }
 
   pressupost(array:Array<string>, idiomes:number, pagines:number){
     this.precio = 0;
+
     let sumaPanell = (idiomes * pagines * 30);
     // Donem per suposat que el primer producte està inclòs. Preu= 500;
     if(array.includes("0")){
@@ -25,8 +30,31 @@ export class ServeiPressupostService {
     if(array.includes("2")){
       this.precio += 200;
     }
-    this.precio += sumaPanell; 
-
+    this.precio += sumaPanell;
+    
     return this.precio;
+  }
+
+  addDadesClient(nomPresupost: string, client: string){
+    this.client = client; 
+    this.nomPresupost = nomPresupost;
+  }
+
+  generador(){
+    // this.arrayClients.push(this.nomPresupost,this.client,this.precio);
+    console.log(this.arrayClients);
+    return (this.client, this.nomPresupost);
+  }
+}
+
+export class Client {
+  nomPresupost: string;
+  client: string;
+  preuFinal: number;
+
+  constructor(nomPresupost: string, client: string, preuFinal: number) {
+    this.nomPresupost = nomPresupost;
+    this.client = client;
+    this.preuFinal = preuFinal;
   }
 }

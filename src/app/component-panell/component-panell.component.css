@@ -1,10 +1,17 @@
 button {
   border-radius: 6px;
   margin: 10px;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 
 input {
-  size: 30px;
-  padding: 5px;
+  padding-top: 5px;
+  font-size: 25px;
+  width: 65px;
+}
+
+.info {
+  background-color: blanchedalmond;
+  border-radius: 21px;
+  width: 6%;
 }

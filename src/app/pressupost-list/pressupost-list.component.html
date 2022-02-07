@@ -1,0 +1,16 @@
+<form>
+    <div class="form-group col-md-7">
+      <label for="exampleInputBudget">Nom del pressupost:</label>
+      <input type="text" class="form-control" id="exampleInputBudget" 
+             aria-describedby="budgetHelp" placeholder="Nom pressupost" #newName>
+      <small id="budgetHelp" class="form-text text-muted">Escriu el nom del teu pressupost.</small>
+    </div>
+    <div class="form-group col-md-7">
+        <label for="exampleInputClient">Client:</label>
+        <input type="text" class="form-control" id="exampleInputClient" 
+               aria-describedby="clientHelp" placeholder="Nom Empresa" #newClient>
+        <small id="clientHelp" class="form-text text-muted">Escriu el nom del teu pressupost.</small>
+    </div>
+    <button type="button" class="btn btn-outline-secondary"
+        (click)="addNewBudget(newName.value, newClient.value)">Afegeix nom i Client</button>
+  </form>

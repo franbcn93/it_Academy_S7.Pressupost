@@ -9,6 +9,10 @@ import { WelcomeComponentComponent } from './welcome-component/welcome-component
 import { InstruccionsComponentComponent } from './instruccions-component/instruccions-component.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyPopupComponent } from './my-popup/my-popup.component';
+import { GeneratorComponentComponent } from './generator-component/generator-component.component';
+import { PressupostListComponent } from './pressupost-list/pressupost-list.component';
 
 const routes: Routes=[
   {path: '', component:WelcomeComponentComponent},
@@ -22,13 +26,17 @@ const routes: Routes=[
     ComponentPanellComponent,
     WelcomeComponentComponent,
     HomeComponentComponent,
-    InstruccionsComponentComponent
+    InstruccionsComponentComponent,
+    MyPopupComponent,
+    GeneratorComponentComponent,
+    PressupostListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule, 
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    NgbModule,
   ],
   providers: [ServeiPressupostService],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
 import { Product } from '../Product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ServeiPressupostService } from '../servei-pressupost.service';
 import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-home-component',
@@ -17,6 +18,9 @@ export class HomeComponentComponent implements OnInit {
   totalPag: number = 0;
   totalId: number = 0;
   arrayProd:any[]= [];
+  nameBudget: string="";
+  nameClient: string="";
+
 
   form: FormGroup;
   
@@ -26,15 +30,22 @@ export class HomeComponentComponent implements OnInit {
     { id: 2, price: 200, name: "Una campanya de publicitat (200 €)" }
   ];
 
-  // @Input() name;
-
-  constructor(fb: FormBuilder, private meuServei:ServeiPressupostService, private _location: Location) {
+  constructor(fb: FormBuilder, private meuServei:ServeiPressupostService, 
+    private _location: Location) {
     this.form = fb.group({
      selected:  new FormArray([])
     });
   }
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+  }
+
+  addBudget(newName: string, newClient:string) {
+    this.nameBudget = newName;
+    this.nameClient = newClient;
+    console.log(this.nameBudget, this.nameClient);
+    this.meuServei.addDadesClient(this.nameBudget, this.nameClient);
   }
 
   onCheckboxChange(event: any) {
@@ -68,7 +79,8 @@ export class HomeComponentComponent implements OnInit {
   }
 
   onClicked(){
-    this.meuServei.mostraMissatge(this.preu, this.total);
+    this.meuServei.mostraMissatge(this.preu, this.total, this.nameBudget, this.nameClient);
+    console.log(this.meuServei.generador());
   }
 
   onClickedBack(){

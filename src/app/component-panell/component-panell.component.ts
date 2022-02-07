@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { MyPopupComponent } from '../my-popup/my-popup.component';
 
 @Component({
   selector: 'app-component-panell',
@@ -10,7 +12,7 @@ export class ComponentPanellComponent implements OnInit {
   paginas: number = 0;
   idiomas: number = 0;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +24,6 @@ export class ComponentPanellComponent implements OnInit {
   @Output() restLanguage = new EventEmitter<number>();
 
   addNewItem(event: any) {
-
     if(event.target.id === "paginas"){
       this.paginas = event.target.value;
     } else{
@@ -44,6 +45,20 @@ export class ComponentPanellComponent implements OnInit {
   }
   restIdioma(){
     this.restLanguage.emit(this.idiomas--); 
+  }
+
+  infoPagina() {
+    const modalRef = this.modalService.open(MyPopupComponent);
+    modalRef.componentInstance.title = 'Informació sobre la pàgina';
+    modalRef.componentInstance.text = "Aquest component indica el nombre de pàgines que " +
+                                      "tindrà la seva pàgina web";
+  }
+
+  infoIdioma() {
+    const modalRef = this.modalService.open(MyPopupComponent);
+    modalRef.componentInstance.title = 'Informació sobre idiomes';
+    modalRef.componentInstance.text = "Aquest component indica el nombre de idiomes " +
+                                      "que tindrà la seva pàgina web";
   }
 
 }
