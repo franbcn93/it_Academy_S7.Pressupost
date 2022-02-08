@@ -21,6 +21,7 @@ export class HomeComponentComponent implements OnInit {
   nameBudget: string="";
   nameClient: string="";
   arrayClients:Client[]=[];
+  id:number = 5;
 
   form: FormGroup;
   
@@ -94,7 +95,8 @@ export class HomeComponentComponent implements OnInit {
 
   onClicked(){
     this.meuServei.mostraMissatge(this.preu, this.total, this.nameBudget, this.nameClient);
-    this.arrayClients = (this.meuServei.generador(this.nameBudget, this.nameClient, this.total, this.getDate()));
+    this.arrayClients = (this.meuServei.generador(this.id, this.nameBudget, this.nameClient, this.total, this.getDate()));
+    this.id++;
   }
 
   onClickedBack(){
