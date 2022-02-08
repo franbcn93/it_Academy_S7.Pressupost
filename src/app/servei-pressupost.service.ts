@@ -7,7 +7,9 @@ export class ServeiPressupostService {
   precio:number = 0;
   client: string="Client anonim";
   nomPresupost:string="Anonim";
-  arrayClients:Client[]=[];
+  arrayClients:Client[]=[
+    new Client("pressupost_1", "Client_1", 350)
+  ];
 
   constructor() { }
 
@@ -40,10 +42,15 @@ export class ServeiPressupostService {
     this.nomPresupost = nomPresupost;
   }
 
-  generador(){
-    // this.arrayClients.push(this.nomPresupost,this.client,this.precio);
+  generador(pressupost:string, client:string, preu:number){
+    let dadesClient:Client = new Client(pressupost, client, preu);
+    this.arrayClients.push(dadesClient);
     console.log(this.arrayClients);
-    return (this.client, this.nomPresupost);
+    return (this.arrayClients);
+  }
+
+  getDades(){
+    return this.arrayClients;
   }
 }
 

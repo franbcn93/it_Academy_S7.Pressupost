@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ServeiPressupostService } from '../servei-pressupost.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Client, ServeiPressupostService } from '../servei-pressupost.service';
 
 @Component({
   selector: 'app-generator-component',
@@ -14,5 +14,12 @@ export class GeneratorComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() cliente:Client;
+  @Input() indice:number;
+
+
+  resultat(){
+    console.log(this.servei.getDades());
+  }
   
 }

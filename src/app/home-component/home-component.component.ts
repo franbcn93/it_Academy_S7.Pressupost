@@ -1,7 +1,7 @@
 import { Product } from '../Product';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { ServeiPressupostService } from '../servei-pressupost.service';
+import { Client, ServeiPressupostService } from '../servei-pressupost.service';
 import {Location} from '@angular/common';
 
 
@@ -20,7 +20,7 @@ export class HomeComponentComponent implements OnInit {
   arrayProd:any[]= [];
   nameBudget: string="";
   nameClient: string="";
-
+  arrayClients:Client[]=[];
 
   form: FormGroup;
   
@@ -80,7 +80,7 @@ export class HomeComponentComponent implements OnInit {
 
   onClicked(){
     this.meuServei.mostraMissatge(this.preu, this.total, this.nameBudget, this.nameClient);
-    console.log(this.meuServei.generador());
+    this.arrayClients = (this.meuServei.generador(this.nameBudget, this.nameClient, this.total));
   }
 
   onClickedBack(){

@@ -37,7 +37,8 @@
             <p class="acepta">Prem el botó 'Instruccions' per veure les bases de l'exercici (pàg Instruccions).</p>
         </div>
         <div class="col-md-6">
-            <app-generator-component></app-generator-component>
+            <app-generator-component *ngFor="let client of arrayClients; let i = index"
+            [cliente]="client" [indice]="i"></app-generator-component>       
         </div>
     </div>
 </div>    
