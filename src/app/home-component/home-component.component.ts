@@ -41,6 +41,20 @@ export class HomeComponentComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
+  getDate(){
+    let date:Date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let resultatDate = ""; 
+    if(month < 10){
+      resultatDate = (`${day}-0${month}-${year}`)
+    }else{
+      resultatDate = (`${day}-${month}-${year}`)
+    }
+    return resultatDate;
+  }
+
   addBudget(newName: string, newClient:string) {
     this.nameBudget = newName;
     this.nameClient = newClient;
@@ -80,7 +94,7 @@ export class HomeComponentComponent implements OnInit {
 
   onClicked(){
     this.meuServei.mostraMissatge(this.preu, this.total, this.nameBudget, this.nameClient);
-    this.arrayClients = (this.meuServei.generador(this.nameBudget, this.nameClient, this.total));
+    this.arrayClients = (this.meuServei.generador(this.nameBudget, this.nameClient, this.total, this.getDate()));
   }
 
   onClickedBack(){
@@ -109,6 +123,18 @@ export class HomeComponentComponent implements OnInit {
     this.totalId = item - 1;
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                   this.totalId, this.totalPag));
+  }
+
+  alfa(){
+    this.meuServei.alfabeticament();
+  }
+  
+  orderDate(){
+    this.meuServei.orderPerDate();
+  }
+
+  reinicialitzarOrdre(){
+    this.meuServei.reinitalitzar();
   }
 
 }

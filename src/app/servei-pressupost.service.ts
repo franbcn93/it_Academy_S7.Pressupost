@@ -8,7 +8,10 @@ export class ServeiPressupostService {
   client: string="Client anonim";
   nomPresupost:string="Anonim";
   arrayClients:Client[]=[
-    new Client("pressupost_1", "Client_1", 350)
+    new Client("Pressupost_1", "Client_1", 350, "5-01-2022"),
+    new Client("Pressupost_3", "Client_3", 850, "4-01-2022"),
+    new Client("Pressupost_4", "Client_4", 600, "3-01-2022"),
+    new Client("Pressupost_2", "Client_2", 250, "1-01-2022"),
   ];
 
   constructor() { }
@@ -42,8 +45,9 @@ export class ServeiPressupostService {
     this.nomPresupost = nomPresupost;
   }
 
-  generador(pressupost:string, client:string, preu:number){
-    let dadesClient:Client = new Client(pressupost, client, preu);
+  generador(pressupost:string, client:string, preu:number, data:string){
+
+    let dadesClient:Client = new Client(pressupost, client, preu, data);
     this.arrayClients.push(dadesClient);
     console.log(this.arrayClients);
     return (this.arrayClients);
@@ -52,16 +56,33 @@ export class ServeiPressupostService {
   getDades(){
     return this.arrayClients;
   }
+
+  alfabeticament(){
+    this.arrayClients.sort((a,b)=>(a.nomPresupost > b.nomPresupost)? 1 : -1);
+  }
+
+  orderPerDate(){
+    this.arrayClients.sort((a,b)=>(a.data > b.data)? 1 : -1);
+  }
+
+  reinitalitzar(){
+    this.arrayClients=[];
+    console.log(this.getDades());
+  }
+
+  
 }
 
 export class Client {
   nomPresupost: string;
   client: string;
   preuFinal: number;
+  data:string;
 
-  constructor(nomPresupost: string, client: string, preuFinal: number) {
+  constructor(nomPresupost: string, client: string, preuFinal: number, data:string) {
     this.nomPresupost = nomPresupost;
     this.client = client;
     this.preuFinal = preuFinal;
+    this.data = data;
   }
 }

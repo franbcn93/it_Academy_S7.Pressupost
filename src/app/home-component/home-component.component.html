@@ -37,8 +37,12 @@
             <p class="acepta">Prem el botó 'Instruccions' per veure les bases de l'exercici (pàg Instruccions).</p>
         </div>
         <div class="col-md-6">
+            <h4>Historial de pressupostos:</h4>
+            <button type="submit" class="btn btn-outline-primary" (click)="alfa()" >Ordenar alfabèticament</button>
+            <button type="submit" class="btn btn-outline-success" (click)="orderDate()">Ordenar per data</button>
+            <button type="submit" class="btn btn-outline-info" (click)="reinicialitzarOrdre()">Reinicialitzar ordre</button>
             <app-generator-component *ngFor="let client of arrayClients; let i = index"
-            [cliente]="client" [indice]="i"></app-generator-component>       
+            [cliente]="client" [indice]="i"></app-generator-component>                                   
         </div>
     </div>
 </div>    
