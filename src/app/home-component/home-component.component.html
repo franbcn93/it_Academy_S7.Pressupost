@@ -42,7 +42,7 @@
             <button type="submit" class="btn btn-outline-success" (click)="orderDate()">Ordenar per data</button>
             <button type="submit" class="btn btn-outline-info" (click)="reinicialitzarOrdre()">Reinicialitzar ordre</button>
             <app-generator-component *ngFor="let client of arrayClients; let i = index"
-            [cliente]="client" [indice]="i"></app-generator-component>                                   
+            [cliente]="client" [indice]="i" class="generator"></app-generator-component>                                   
         </div>
     </div>
 </div>    

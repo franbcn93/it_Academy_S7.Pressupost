@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class ServeiPressupostService {
     new Client(4, "Pressupost_2", "Client_2", 250, "1-01-2022"),
   ];
 
-  constructor() { }
+  constructor(private location: Location) { 
+    this.location = location;
+  }
 
   mostraMissatge(mensaje:string, resultat:number, nomPresupost:string, nomClient:string){
     alert("El client: " + nomClient + " a efectuat un contracte amb el nom del pressupost: " +

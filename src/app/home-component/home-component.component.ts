@@ -15,6 +15,8 @@ export class HomeComponentComponent implements OnInit {
   total: number = 0;
   preu: string = 'El preu total dels teus productes son: ';
   paginaWeb: boolean = false;
+  campania:boolean = false;
+  campaniaPub:boolean = false;
   totalPag: number = 0;
   totalId: number = 0;
   arrayProd:any[]= [];
@@ -66,7 +68,13 @@ export class HomeComponentComponent implements OnInit {
   onCheckboxChange(event: any) {
     if ( event.target.checked ) {
       if(event.target.id === "0"){
-        this.paginaWeb = true;
+        this.paginaWeb = true;        
+      }
+      if(event.target.id === "1"){
+        this.campania = true;
+      }
+      if(event.target.id === "2"){
+        this.campaniaPub = true;
       }
       // Afegim el producte
       this.arrayProd.push(event.target.id);
@@ -74,11 +82,19 @@ export class HomeComponentComponent implements OnInit {
       if(event.target.id === "0"){
         this.paginaWeb = false;
       }
+      if(event.target.id === "1"){
+        this.campania = false;
+      }
+      if(event.target.id === "2"){
+        this.campaniaPub = false;
+      }
       // Filtrem el resultat de l'array de productes seleccionats
       this.arrayProd = this.arrayProd.filter(el => !(event.target.id).includes(el))
     }
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                   this.totalId, this.totalPag));
+     console.log(this.totalId, this.totalPag);             
+    this.urlPage();
   }
 
 
@@ -107,24 +123,28 @@ export class HomeComponentComponent implements OnInit {
     this.totalPag = item + 1;
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                       this.totalId, this.totalPag));
+    this.urlPage();
   }
 
   addItemLanguage(item:number){
     this.totalId = item + 1;
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                   this.totalId, this.totalPag));
+    this.urlPage();
   }
 
   restItemPage(item: number){
     this.totalPag = item - 1;
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                   this.totalId, this.totalPag));
+    this.urlPage();
   }
 
   restItemLanguage(item: number){
     this.totalId = item - 1;
     this.total = (this.meuServei.pressupost(this.arrayProd, 
                   this.totalId, this.totalPag));
+    this.urlPage();
   }
 
   alfa(){
@@ -137,6 +157,11 @@ export class HomeComponentComponent implements OnInit {
 
   reinicialitzarOrdre(){
     this.meuServei.reinitalitzar();
+  }
+
+  urlPage(){
+    this._location.replaceState("State", 
+    `?pagWeb=${this.paginaWeb}&campaniaSEO=${this.campania}&campaniaPub=${this.campaniaPub}&pag=${this.totalPag}&id=${this.totalId}`);
   }
 
 }
