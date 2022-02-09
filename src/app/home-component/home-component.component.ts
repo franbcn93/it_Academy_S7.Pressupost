@@ -159,6 +159,10 @@ export class HomeComponentComponent implements OnInit {
     this.meuServei.reinitalitzar();
   }
 
+  cercador(event:any){
+    this.meuServei.cerca(event.target.value);
+  }
+
   urlPage(){
     this._location.replaceState("State", 
     `?pagWeb=${this.paginaWeb}&campaniaSEO=${this.campania}&campaniaPub=${this.campaniaPub}&pag=${this.totalPag}&id=${this.totalId}`);

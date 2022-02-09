@@ -52,7 +52,6 @@ export class ServeiPressupostService {
 
     let dadesClient:Client = new Client(id, pressupost, client, preu, data);
     this.arrayClients.push(dadesClient);
-    console.log(this.arrayClients);
     return (this.arrayClients);
   }
 
@@ -70,6 +69,21 @@ export class ServeiPressupostService {
 
   reinitalitzar(){
     this.arrayClients.sort((a,b)=>(a.id > b.id)? 1 : -1);
+  }
+
+  cerca(paraula:any){
+     this.arrayClients.some(function(el) {
+       if((el.nomPresupost === paraula)){
+         console.log(el)
+         let dadesClient:Client = new Client(el.id, el.nomPresupost, el.client, el.preuFinal, el.data);
+        //  this.arrayClients.push(dadesClient);
+       }
+       
+    }); 
+    // if(Object.values(this.arrayClients).includes(paraula)){
+    //   console.log("Tiene la palabra");
+    // }
+    // console.log(this.arrayClients);
   }
 
   

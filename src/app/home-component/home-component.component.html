@@ -41,6 +41,10 @@
             <button type="submit" class="btn btn-outline-primary" (click)="alfa()" >Ordenar alfabèticament</button>
             <button type="submit" class="btn btn-outline-success" (click)="orderDate()">Ordenar per data</button>
             <button type="submit" class="btn btn-outline-info" (click)="reinicialitzarOrdre()">Reinicialitzar ordre</button>
+            <form action="">
+                <label for="">Cercador pressupostos </label>
+                <input type="text" (keyup)="cercador($event)">
+            </form>
             <app-generator-component *ngFor="let client of arrayClients; let i = index"
             [cliente]="client" [indice]="i" class="generator"></app-generator-component>                                   
         </div>
