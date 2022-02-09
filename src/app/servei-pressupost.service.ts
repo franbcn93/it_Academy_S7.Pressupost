@@ -72,18 +72,16 @@ export class ServeiPressupostService {
   }
 
   cerca(paraula:any){
-     this.arrayClients.some(function(el) {
+     this.arrayClients.some((el) => {
        if((el.nomPresupost === paraula)){
-         console.log(el)
-         let dadesClient:Client = new Client(el.id, el.nomPresupost, el.client, el.preuFinal, el.data);
-        //  this.arrayClients.push(dadesClient);
-       }
-       
+         console.log(this.arrayClients.filter(word=> word.nomPresupost === paraula));
+         this.arrayClients.pop();
+         this.arrayClients.pop();
+         this.arrayClients.pop();
+         this.arrayClients.pop();
+         this.generador(el.id, el.nomPresupost, el.client, el.preuFinal, el.data);
+       }   
     }); 
-    // if(Object.values(this.arrayClients).includes(paraula)){
-    //   console.log("Tiene la palabra");
-    // }
-    // console.log(this.arrayClients);
   }
 
   
